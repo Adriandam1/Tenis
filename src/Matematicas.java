@@ -9,6 +9,7 @@ public class Matematicas {
      * @return Suma de los dos números
      */
     public static int suma(int num1, int num2){
+
         return num1 + num2;
     }
 }

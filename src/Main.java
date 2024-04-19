@@ -1,64 +1,88 @@
+
+
 public class Main {
+
+    /**
+     * Ventaja jugador1
+     */
+    public static final int VENTAJAJ1 = 1;
+    /**
+     * Ventaja jugador2
+     * */
+    public static final int VENTAJAJ2 = -1;
+    /**
+     * Victoria jugador1
+     */
+    public static final int VICTORIAJ1 = 2;
+    /**
+     * Victoria jugador2
+     */
+    public static final int VICTORIAJ2 = -2;
+
     /**
      * metodo para devolver la puntuacion de tenis
      */
-    public static String getScore(int m_score1, int m_score2) {
-        String score = "";
-        int tempScore=0;
+    public static String getScore(int j1_puntos, int j2_puntos) {
+        String puntuacion = "";
+        int marcador=0;
 
-        if (m_score1 == m_score2) {
-            switch (m_score1)
+        //Aqui gestionamos los empates a puntos
+        if (j1_puntos == j2_puntos) {
+            switch (j1_puntos)
             {
                 case 0:
-                    score = "Love-All";
+                    puntuacion = "Love-All";
                     break;
                 case 1:
-                    score = "Fifteen-All";
+                    puntuacion = "Fifteen-All";
                     break;
                 case 2:
-                    score = "Thirty-All";
+                    puntuacion = "Thirty-All";
                     break;
                 case 3:
-                    score = "Forty-All";
+                    puntuacion = "Forty-All";
                     break;
                 default:
-                    score = "Deuce";
+                    puntuacion = "Deuce";
                     break;
 
             }
         }
-        else if (m_score1 >=4 || m_score2 >=4)
+        //Aqui gestionamos cuando hay ventaja(+40ptos)
+        else if (j1_puntos >=4 || j2_puntos >=4)
         {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
+            int dif_puntos = j1_puntos-j2_puntos;
+            if (dif_puntos== VENTAJAJ1) puntuacion ="Advantage player1";
+            else if (dif_puntos == VENTAJAJ2) puntuacion ="Advantage player2";
+            else if (dif_puntos>= VICTORIAJ1) puntuacion = "Win for player1";
+            else if (dif_puntos>= VICTORIAJ2) puntuacion = "Win for player2";
+            else puntuacion ="Error, puntuacion imposible";
         }
         else
         {
+            // Resto de casuisticas
             for (int i=1; i<3; i++)
             {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
+                if (i==1) marcador = j1_puntos;
+                else { puntuacion+="-"; marcador = j2_puntos;}
+                switch(marcador)
                 {
                     case 0:
-                        score+="Love";
+                        puntuacion+="Love";
                         break;
                     case 1:
-                        score+="Fifteen";
+                        puntuacion+="Fifteen";
                         break;
                     case 2:
-                        score+="Thirty";
+                        puntuacion+="Thirty";
                         break;
                     case 3:
-                        score+="Forty";
+                        puntuacion+="Forty";
                         break;
                 }
             }
 
         }
-    return score;
+    return puntuacion;
     }
 }
