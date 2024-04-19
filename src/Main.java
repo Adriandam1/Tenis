@@ -22,6 +22,7 @@ public class Main {
     /**
      * metodo para devolver la puntuacion de tenis
      */
+    //TODO : cambiar las condiciones de los if, cambiar strings a array, mejorar/quitar switched
     public static String getScore(int j1_puntos, int j2_puntos) {
         String puntuacion = "";
         int marcador=0;
