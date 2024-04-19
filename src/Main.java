@@ -8,7 +8,7 @@ public class Main {
     public static final int VENTAJAJ1 = 1;
     /**
      * Ventaja jugador2
-     * */
+     */
     public static final int VENTAJAJ2 = -1;
     /**
      * Victoria jugador1
